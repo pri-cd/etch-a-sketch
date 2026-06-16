@@ -1,0 +1,107 @@
+:root {
+    --primaryColor: #3E6990;
+    --secondaryColor: #F39B6D;
+    
+    --fontColor: #E9E3B4;
+    --backgroundColor: #E9E3B4; 
+    --highlightColor: #3E6990;
+
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: var(--backgroundColor);
+
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    background-color: var(--primaryColor);
+    padding: 10px;
+
+    .logo img {
+        height: 50px;
+    }
+
+    .title {
+        font-size: x-large;
+        font-weight: bolder;
+        color: var(--fontColor);
+    }
+
+    .sizeChangePrompt {
+        margin: auto 0px auto auto;
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        gap: 20px;
+
+
+        .changeGridSize {
+            background-color: var(--backgroundColor);
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: small;
+            color: var(--fontColor);
+        }
+    
+        .changeGridSize:focus {
+            outline: none;
+            border: 1px solid var(--highlightColor);
+        }
+    
+        .changeGridButton
+        {
+            border: none;
+            font-size: small;
+            padding: 5px;
+            background-color: var(--secondaryColor);
+            
+            border-radius: 5px;
+            border: 1px solid var(--highlightColor);
+            
+        }
+
+        .changeGridButton:active
+        {
+            transform: scale(0.95);
+        }
+    }
+}
+
+
+.mainContainer
+{
+    flex: 1;
+}
+
+
+.footer
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .attribution
+    {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        background-color: var(--primaryColor);
+        color: var(--fontColor);
+    }
+}
