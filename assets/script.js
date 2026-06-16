@@ -74,6 +74,12 @@ function registerChangeGridListener() {
         if (newGridValue !== ERR) {
             eraseGrid();
             generateGrid(newGridValue);
+            debug("Generating grid for: ", newGridValue);
+            registerHoverElementListeners();
+        }
+        else
+        {
+            debug("Not Generating Grid!");
         }
     });
 }
