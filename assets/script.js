@@ -1,36 +1,32 @@
-const DEBUG = true;
-const GRID_SZ_DEFAULT = 16;
-const GRID_SUB_CONTAINER = "gridSubContainer";
-
-function debug(...args) {
-    if (DEBUG === true) {
-        console.log(...args);
-    }
-}
+const DEFAULT_GD_SIZE = 16;
 
 
-function createGrid(gridSize) {
-    const gridContainer = document.querySelector("#gridContainer");
-    const gridSubContainer = document.createElement("div");
-    const gridArray = [];
 
+
+
+
+function generateGrid(gridSize) {
+
+    const mainContainer = document.querySelector("#mainContainer");
+    const subContainer = document.createElement("div");
+    
     for (let row = 0; row < gridSize; row++) {
-        let rowElements = [];
-        for (let column = 0; column < gridSize; column++) {
-          
-            let columnElement = document.createElement('div');
-            
-            columnElement.classList.add('gridCSS')
-            rowElements.push(columnElement);
-            gridSubContainer.appendChild(columnElement)
+        let rowContainer = document.createElement('div');
         
-        }
-        debug(rowElements);
-    }
-    gridSubContainer.classList.add(GRID_SUB_CONTAINER);
-    gridSubContainer.setAttribute('id', GRID_SUB_CONTAINER);
+        for (let column = 0; column < gridSize; column++) {
+            let element = document.createElement('div');
+            element.classList.add('gridElementCSS');
 
-    gridContainer.appendChild(gridSubContainer);
+            rowContainer.appendChild(element);
+        }
+        rowContainer.classList.add('rowContainerCSS')
+        subContainer.appendChild(rowContainer); 
+    }
+    
+    subContainer.setAttribute("id", "subContainer");
+    subContainer.classList.add("subContainerCSS");
+    mainContainer.appendChild(subContainer);
 }
 
-createGrid(GRID_SZ_DEFAULT);
+
+generateGrid(DEFAULT_GD_SIZE);
