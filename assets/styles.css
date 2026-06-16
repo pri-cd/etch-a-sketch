@@ -91,7 +91,7 @@ body {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-
+        border: 2px solid var(--primaryColor);
         min-width: 500px;
         min-height: 500px;
     }
@@ -102,9 +102,6 @@ body {
 
     .gridElementCSS {
         min-width: 10px;
-        box-sizing: border-box;
-        border: 2px solid black;
-        background-color: var(--secondaryColor);
         aspect-ratio: 1 / 1;
     }
 }
