@@ -77,24 +77,44 @@ function registerChangeGridListener() {
             debug("Generating grid for: ", newGridValue);
             registerHoverElementListeners();
         }
-        else
-        {
+        else {
             debug("Not Generating Grid!");
         }
     });
 }
+
 
 function getRandomColor() {
     const hexArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
 
     let code = "#";
 
-    for (let hexLen = 0; hexLen < 6; hexLen++)
-    {
+    for (let hexLen = 0; hexLen < 6; hexLen++) {
         code += hexArray[(Math.floor(Math.random() * 16))];
     }
-    debug('Random Color', code);
     return code;
+}
+
+function handleColors(event) {
+
+    if (event.target.className === GE_CSS) {
+        let opacity = window.getComputedStyle(event.target).getPropertyValue('opacity');
+
+        if (opacity < 1) {
+            event.target.style.opacity = String(Number.parseFloat(opacity) + 0.1);
+            event.target.style.backgroundColor = getRandomColor();
+            debug(opacity);
+        }
+
+        if (opacity == 1)
+        {
+            if (event.target.style.backgroundColor !== "black")
+            {
+                event.target.style.backgroundColor = "black";
+            }
+        }
+
+    }
 }
 
 function registerHoverElementListeners() {
@@ -105,10 +125,7 @@ function registerHoverElementListeners() {
     subContainer.addEventListener('mouseover', (event) => {
         if (userInput < MAX_HOVER) {
             userInput++;
-            let className = event.target.className;
-            if (className === GE_CSS) {
-                event.target.style.backgroundColor = getRandomColor();
-            }
+            handleColors(event);
         }
         else {
             debug("Reached Limit: " + MAX_HOVER);
